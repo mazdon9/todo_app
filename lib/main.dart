@@ -453,7 +453,9 @@ class LoginScreen extends StatelessWidget {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => DashBoardScreen()),
+                    MaterialPageRoute(
+                      builder: (context) => RegistrationScreen(),
+                    ),
                   );
                 },
                 child: Text(
@@ -480,6 +482,60 @@ class DashBoardScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      body: Stack(
+        children: [
+          Container(
+            width: MediaQuery.of(context).size.width,
+            height: 307,
+            color: Color(0xff50C2C9),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 128, bottom: 39),
+            child: Align(
+              alignment: Alignment.topCenter,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Container(
+                    width: 100,
+                    height: 100,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      border: Border.all(color: Colors.white, width: 2.0),
+                    ),
+                    child: ClipOval(
+                      child: Image.asset(
+                        'assets/images/avatar.jpg',
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 18), // khoảng cách giữa avatar và text
+                  Text(
+                    'Welcome, Oliva Grace',
+                    style: TextStyle(
+                      fontFamily: 'Poppins-Regulator',
+                      fontSize: 18,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.white,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+
+          Align(
+            alignment: Alignment.topLeft,
+            child: Image.asset('assets/images/shape1.png'),
+          ),
+        ],
+      ),
+    );
   }
 }
+// Padding(
+//           padding: const EdgeInsets.only(top: 134, bottom: 74),
+//           child: Center(child: Text('Welcome, Oliva Grace', style: TextStyle(fontFamily: 'Poppins-Regular', fontSize: 18, fontWeight: FontWeight.w600, color: Colors.white),)),
+//         )
