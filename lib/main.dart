@@ -54,7 +54,10 @@ class TodoApp extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(left: 48.0, right: 46.0),
             child: Text(
-              'Lorem ipsum dolor sit amet, consectetur adipiscing elsit. Interdum dictum tempus, interdum at dignissim metus. Ultricies sed nunc.',
+              'Lorem ipsum dolor sit amet,\n'
+              'consectetur adipiscing elit. Interdum\n'
+              'dictum tempus, interdum at dignissim\n'
+              'metus. Ultricies sed nunc.',
               textAlign: TextAlign.center, // Canh trái văn bản
               style: TextStyle(
                 fontFamily: 'Poppins',
