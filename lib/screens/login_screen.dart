@@ -1,4 +1,11 @@
+import 'package:dotted_border/dotted_border.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:todo_app/components/app_button.dart';
+import 'package:todo_app/components/app_text.dart';
+import 'package:todo_app/components/app_text_field.dart';
+import 'package:todo_app/components/app_text_style.dart';
+import 'package:todo_app/constants/app_color_path.dart';
 import 'package:todo_app/constants/app_image_path.dart';
 import 'package:todo_app/screens/dashboard_screen.dart';
 import 'package:todo_app/screens/registration_screen.dart';
@@ -10,169 +17,98 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xffF6F6F6),
-      body: Column(
-        children: [
-          Align(
-            alignment: Alignment.topLeft,
-            child: Image.asset(AppImagePath.bgTopLeftCirclesImg),
-          ),
-          SizedBox(height: 76),
-          Center(
-            child: Text(
-              'Welcome Back!',
-              style: TextStyle(
-                fontFamily: 'Poppins-Regular',
-                fontSize: 18,
-                fontWeight: FontWeight.w600,
-                letterSpacing: 2,
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Align(
+              alignment: Alignment.topLeft,
+              child: Image.asset(AppImagePath.bgTopLeftCirclesImg),
+            ),
+            SizedBox(height: 76),
+            Center(
+              child: AppText(
+                title: 'Welcome Back!',
+                style: AppTextStyle.textFont18W600,
               ),
             ),
-          ),
-          SizedBox(height: 5),
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 40, vertical: 20),
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.black, width: 1),
-            ),
-            child: Image.asset(AppImagePath.manInsidePhoneImg),
-          ),
-          SizedBox(height: 16),
-          SizedBox(
-            width: 321,
-            height: 51,
-            child: Center(
-              child: TextField(
-                decoration: InputDecoration(
-                  filled: true,
-                  fillColor: Color(0xffFFFFFF),
-                  hintText: 'Enter your email',
-                  hintStyle: TextStyle(
-                    fontFamily: 'Poppins-Regular',
-                    fontSize: 13,
-                    fontWeight: FontWeight.w400,
-                    letterSpacing: 2,
-                    color: Color(0xff565656),
-                  ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(30),
-                    borderSide: BorderSide.none,
-                  ),
-                  contentPadding: EdgeInsets.symmetric(
-                    horizontal: 30,
-                    vertical: 16,
-                  ),
+            SizedBox(height: 5),
+            Container(
+              padding: EdgeInsets.symmetric(vertical: 20),
+              child: DottedBorder(
+                options: RectDottedBorderOptions(
+                  dashPattern: [10, 5],
+                  strokeWidth: 1,
+                  padding: EdgeInsets.symmetric(horizontal: 45, vertical: 10),
                 ),
+                child: Image.asset(AppImagePath.manInsidePhoneImg),
               ),
             ),
-          ),
-          SizedBox(height: 21),
-          SizedBox(
-            width: 321,
-            height: 51,
-            child: Center(
-              child: TextField(
-                decoration: InputDecoration(
-                  filled: true,
-                  fillColor: Color(0xffFFFFFF),
-                  hintText: 'Enter your password',
-                  hintStyle: TextStyle(
-                    fontFamily: 'Poppins-Regular',
-                    fontSize: 13,
-                    fontWeight: FontWeight.w400,
-                    letterSpacing: 2,
-                    color: Color(0xff565656),
-                  ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(30),
-                    borderSide: BorderSide.none,
-                  ),
-                  contentPadding: EdgeInsets.symmetric(
-                    horizontal: 30,
-                    vertical: 16,
-                  ),
-                ),
-              ),
+
+            SizedBox(height: 16),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25),
+              child: AppTextField(hintText: 'Enter your email'),
             ),
-          ),
-          SizedBox(height: 25),
-          GestureDetector(
-            onTap: () {
-              print('taping');
-            },
-            child: Center(
-              child: Text(
-                'Forgot Password',
-                style: TextStyle(
-                  fontFamily: 'Poppins',
-                  fontSize: 14,
-                  fontWeight: FontWeight.w500,
-                  letterSpacing: 1,
-                  color: Color(0xff50C2C9),
-                ),
-              ),
+            SizedBox(height: 21),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25),
+              child: AppTextField(hintText: 'Enter your password'),
             ),
-          ),
-          SizedBox(height: 24),
-          GestureDetector(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => DashBoardScreen()),
-              );
-            },
-            child: Container(
-              width: 325,
-              height: 62,
-              decoration: BoxDecoration(color: Color(0xff50C2C9)),
+            SizedBox(height: 25),
+            GestureDetector(
+              onTap: () {
+                print('taping');
+              },
               child: Center(
-                child: Text(
-                  'Sign In',
-                  style: TextStyle(
-                    fontFamily: 'Poppins',
-                    fontSize: 18,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.white,
+                child: AppText(
+                  title: 'Forgot Password',
+                  style: AppTextStyle.textFont13W400.copyWith(
+                    color: AppColorPath.blue,
                   ),
                 ),
               ),
             ),
-          ),
-          SizedBox(height: 29),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                'Don’t have an account ?',
-                style: TextStyle(
-                  fontFamily: 'Poppins-Regular',
-                  fontSize: 13,
-                  fontWeight: FontWeight.w400,
-                  letterSpacing: 1,
-                ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => RegistrationScreen(),
+            SizedBox(height: 24),
+            AppButton(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => DashBoardScreen()),
+                );
+              },
+              content: 'Sign In',
+            ),
+            SizedBox(height: 29),
+            Text.rich(
+              TextSpan(
+                children: [
+                  TextSpan(
+                    text: 'Don’t have an account ?',
+                    style: AppTextStyle.textFont13W400.copyWith(
+                      color: AppColorPath.black,
                     ),
-                  );
-                },
-                child: Text(
-                  ' Sign Up',
-                  style: TextStyle(
-                    fontFamily: 'Poppins',
-                    fontSize: 13,
-                    fontWeight: FontWeight.w600,
-                    letterSpacing: 1,
-                    color: Color(0xff50C2C9),
                   ),
-                ),
+                  TextSpan(
+                    text: ' Sign Up',
+                    recognizer:
+                        TapGestureRecognizer()
+                          ..onTap = () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => RegistrationScreen(),
+                              ),
+                            );
+                          },
+                    style: AppTextStyle.textFont14W700.copyWith(
+                      color: AppColorPath.blue,
+                    ),
+                  ),
+                ],
               ),
-            ],
-          ),
-        ],
+            ),
+          ],
+        ),
       ),
     );
   }

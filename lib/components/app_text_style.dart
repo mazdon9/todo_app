@@ -15,4 +15,10 @@ class AppTextStyle {
     fontWeight: FontWeight.w400,
     color: AppColorPath.black.withValues(alpha: 74),
   );
+  static final TextStyle textFont14W700 = TextStyle(
+    fontFamily: 'Poppins',
+    fontSize: 14,
+    fontWeight: FontWeight.w700,
+    color: AppColorPath.black.withValues(alpha: 75),
+  );
 }
