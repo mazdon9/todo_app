@@ -16,7 +16,7 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xffF6F6F6),
+      backgroundColor: AppColorPath.lightWhite,
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -24,27 +24,21 @@ class LoginScreen extends StatelessWidget {
               alignment: Alignment.topLeft,
               child: Image.asset(AppImagePath.bgTopLeftCirclesImg),
             ),
-            SizedBox(height: 76),
-            Center(
-              child: AppText(
-                title: 'Welcome Back!',
-                style: AppTextStyle.textFont18W600,
-              ),
+            SizedBox(height: 35),
+            AppText(title: 'Welcome Back!', style: AppTextStyle.textFont18W600),
+            SizedBox(height: 10),
+            DottedBorder(
+              // options: RectDottedBorderOptions(
+              //   dashPattern: [10, 5],
+              //   strokeWidth: 1,
+              //   padding: EdgeInsets.symmetric(horizontal: 45, vertical: 10),
+              // ),
+              dashPattern: [10, 5],
+              strokeWidth: 1,
+              padding: EdgeInsets.symmetric(horizontal: 45, vertical: 10),
+              child: Image.asset(AppImagePath.manInsidePhoneImg),
             ),
-            SizedBox(height: 5),
-            Container(
-              padding: EdgeInsets.symmetric(vertical: 20),
-              child: DottedBorder(
-                options: RectDottedBorderOptions(
-                  dashPattern: [10, 5],
-                  strokeWidth: 1,
-                  padding: EdgeInsets.symmetric(horizontal: 45, vertical: 10),
-                ),
-                child: Image.asset(AppImagePath.manInsidePhoneImg),
-              ),
-            ),
-
-            SizedBox(height: 16),
+            SizedBox(height: 36),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25),
               child: AppTextField(hintText: 'Enter your email'),
@@ -56,9 +50,8 @@ class LoginScreen extends StatelessWidget {
             ),
             SizedBox(height: 25),
             GestureDetector(
-              onTap: () {
-                print('taping');
-              },
+              /// TODO: Forgot Password Flow
+              onTap: () {},
               child: Center(
                 child: AppText(
                   title: 'Forgot Password',
