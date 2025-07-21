@@ -1,4 +1,9 @@
+import 'package:animated_analog_clock/animated_analog_clock.dart';
 import 'package:flutter/material.dart';
+import 'package:todo_app/components/app_event_changes.dart';
+import 'package:todo_app/components/app_text.dart';
+import 'package:todo_app/components/app_text_style.dart';
+import 'package:todo_app/constants/app_color_path.dart';
 import 'package:todo_app/constants/app_image_path.dart';
 
 class DashBoardScreen extends StatefulWidget {
@@ -33,7 +38,10 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                         height: 100,
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          border: Border.all(color: Colors.white, width: 2.0),
+                          border: Border.all(
+                            color: Color(0xff2B8E94),
+                            width: 2.0,
+                          ),
                         ),
                         child: ClipOval(
                           child: Image.asset(
@@ -42,14 +50,11 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                           ),
                         ),
                       ),
-                      SizedBox(height: 18), // khoảng cách giữa avatar và text
-                      Text(
-                        'Welcome, Oliva Grace',
-                        style: TextStyle(
-                          fontFamily: 'Poppins-Regulator',
-                          fontSize: 18,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.white,
+                      SizedBox(height: 18),
+                      AppText(
+                        title: 'Welcome, Oliva Grace',
+                        style: AppTextStyle.textFont18W600.copyWith(
+                          color: AppColorPath.white,
                         ),
                       ),
                     ],
@@ -66,26 +71,21 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
           SizedBox(height: 25),
           Padding(
             padding: const EdgeInsets.only(right: 25.0),
-            child: Align(
-              alignment: Alignment.topRight,
-              child: Text(
-                'Good Afternoon',
-                style: TextStyle(
-                  fontFamily: 'Poppins',
-                  fontSize: 12,
-                  fontWeight: FontWeight.w600,
-                  color: Color(0xff3E3E3E),
-                  letterSpacing: 1.5,
-                ),
-              ),
-            ),
+            child: Align(alignment: Alignment.topRight, child: Greeting()),
           ),
           SizedBox(
             width: 100,
             height: 100,
-            child: Align(
-              alignment: Alignment.center,
-              child: Image.asset(AppImagePath.oclockImg),
+            child: AnimatedAnalogClock(
+              location: 'Australia/Darwin',
+              size: 100,
+              backgroundColor: Color(0xff1E1E26),
+              hourHandColor: Colors.lightBlueAccent,
+              minuteHandColor: Colors.lightBlueAccent,
+              secondHandColor: Colors.amber,
+              centerDotColor: Colors.amber,
+              hourDashColor: Colors.lightBlue,
+              minuteDashColor: Colors.blueAccent,
             ),
           ),
           SizedBox(height: 24),
@@ -93,15 +93,9 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
             padding: const EdgeInsets.only(left: 27.0),
             child: Align(
               alignment: Alignment.topLeft,
-              child: Text(
-                'Tasks List',
-                style: TextStyle(
-                  fontFamily: 'Poppins',
-                  fontSize: 18,
-                  fontWeight: FontWeight.w600,
-                  color: Color(0xff3E3E3E),
-                  letterSpacing: 1.5,
-                ),
+              child: AppText(
+                title: 'Tasks List',
+                style: AppTextStyle.textFont18W600,
               ),
             ),
           ),
@@ -127,7 +121,7 @@ class TaskListView extends StatelessWidget {
         borderRadius: BorderRadius.circular(30),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.2),
+            color: Colors.black.withValues(alpha: 0.2),
             blurRadius: 12,
             offset: Offset(0, 4),
           ),
@@ -140,15 +134,9 @@ class TaskListView extends StatelessWidget {
             children: [
               Align(
                 alignment: Alignment.topLeft,
-                child: Text(
-                  'Tasks List',
-                  style: TextStyle(
-                    fontFamily: 'Poppins',
-                    fontSize: 14,
-                    fontWeight: FontWeight.w400,
-                    color: Color(0xff3E3E3E),
-                    letterSpacing: 1.5,
-                  ),
+                child: AppText(
+                  title: 'Tasks List',
+                  style: AppTextStyle.textFont13W400,
                 ),
               ),
               Padding(
@@ -179,7 +167,6 @@ class TaskListOnly extends StatelessWidget {
     "Have Launch  at 1pm",
     "Learn HTML and CSS at 3pm",
     "Have Dinner at 8pm",
-    " Go to Sleep at 10pm",
   ];
   TaskListOnly({super.key});
 
@@ -187,15 +174,13 @@ class TaskListOnly extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: Padding(
-        padding: const EdgeInsets.only(
-          right: 34,
-        ), //  Đẩy scrollbar vào trái 34px
+        padding: const EdgeInsets.only(right: 34),
         child: Scrollbar(
           thumbVisibility: true,
           thickness: 4,
           radius: Radius.circular(10),
           child: ListView.builder(
-            padding: EdgeInsets.only(right: 0), //  Bỏ padding trong ListView
+            padding: EdgeInsets.only(right: 0),
             itemCount: tasks.length,
             itemBuilder: (context, index) {
               return Padding(
