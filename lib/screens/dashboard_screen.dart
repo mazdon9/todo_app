@@ -125,7 +125,7 @@ class TaskListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
+    // final size = MediaQuery.of(context).size;
 
     return Container(
       width: 323,
@@ -232,21 +232,21 @@ class _TaskListOnlyState extends State<TaskListOnly> {
                                 : Colors.transparent,
                       ),
                     ),
-                  ),
-                  Expanded(
-                    child: AppText(
-                      title: AppData.tasksList[index].title,
-                      style: TextStyle(
-                        fontSize: 15,
-                        color: Colors.black87,
-                        decoration:
-                            AppData.tasksList[index].isCompleted
-                                ? TextDecoration.lineThrough
-                                : null,
+                    Expanded(
+                      child: AppText(
+                        title: AppData.tasksList[index].title,
+                        style: TextStyle(
+                          fontSize: 15,
+                          color: Colors.black87,
+                          decoration:
+                              AppData.tasksList[index].isCompleted
+                                  ? TextDecoration.lineThrough
+                                  : null,
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               );
             },
           ),
