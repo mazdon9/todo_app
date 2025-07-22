@@ -187,22 +187,19 @@ class TaskListOnly extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: Padding(
-        padding: const EdgeInsets.only(
-          right: 34,
-        ), //  Đẩy scrollbar vào trái 34px
+        padding: const EdgeInsets.only(right: 34),
         child: Scrollbar(
           thumbVisibility: true,
           thickness: 4,
           radius: Radius.circular(10),
           child: ListView.builder(
-            padding: EdgeInsets.only(right: 0), //  Bỏ padding trong ListView
+            padding: EdgeInsets.only(right: 0),
             itemCount: tasks.length,
             itemBuilder: (context, index) {
               return Padding(
                 padding: const EdgeInsets.symmetric(vertical: 6.0),
                 child: Row(
                   children: [
-                    // Fake checkbox
                     Container(
                       width: 18,
                       height: 18,
