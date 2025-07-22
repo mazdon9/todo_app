@@ -77,15 +77,15 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
             width: 100,
             height: 100,
             child: AnimatedAnalogClock(
-              location: 'Australia/Darwin',
+              // location: 'Australia/Darwin',
               size: 100,
-              backgroundColor: Color(0xff1E1E26),
-              hourHandColor: Colors.lightBlueAccent,
-              minuteHandColor: Colors.lightBlueAccent,
-              secondHandColor: Colors.amber,
-              centerDotColor: Colors.amber,
-              hourDashColor: Colors.lightBlue,
-              minuteDashColor: Colors.blueAccent,
+              // backgroundColor: Color(0xff1E1E26),
+              // hourHandColor: Colors.lightBlueAccent,
+              // minuteHandColor: Colors.lightBlueAccent,
+              // secondHandColor: Colors.amber,
+              // centerDotColor: Colors.amber,
+              // hourDashColor: Colors.lightBlue,
+              // minuteDashColor: Colors.blueAccent,
             ),
           ),
           SizedBox(height: 24),
@@ -115,7 +115,7 @@ class TaskListView extends StatelessWidget {
     return Container(
       width: 323,
       height: 248,
-      padding: const EdgeInsets.only(top: 26, left: 21),
+      padding: const EdgeInsets.only(top: 26, left: 21, bottom: 20),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(30),
@@ -187,7 +187,6 @@ class TaskListOnly extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(vertical: 6.0),
                 child: Row(
                   children: [
-                    // Fake checkbox
                     Container(
                       width: 18,
                       height: 18,
