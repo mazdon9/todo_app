@@ -42,7 +42,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                           ),
                         ),
                       ),
-                      SizedBox(height: 18), // khoảng cách giữa avatar và text
+                      SizedBox(height: 18),
                       Text(
                         'Welcome, Oliva Grace',
                         style: TextStyle(
