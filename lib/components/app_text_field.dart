@@ -4,7 +4,8 @@ import 'package:todo_app/constants/app_color_path.dart';
 
 class AppTextField extends StatelessWidget {
   final String hintText;
-  const AppTextField({required this.hintText, super.key});
+  final TextEditingController? controller;
+  const AppTextField({required this.hintText, super.key, this.controller});
 
   @override
   Widget build(BuildContext context) {

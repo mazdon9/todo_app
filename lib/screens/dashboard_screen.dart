@@ -1,7 +1,7 @@
 import 'package:animated_analog_clock/animated_analog_clock.dart';
 import 'package:flutter/material.dart';
+import 'package:todo_app/components/app_dialog.dart';
 import 'package:todo_app/components/app_text.dart';
-import 'package:todo_app/components/app_text_field.dart';
 import 'package:todo_app/components/app_text_style.dart';
 import 'package:todo_app/constants/app_color_path.dart';
 import 'package:todo_app/constants/app_data.dart';
@@ -77,15 +77,15 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
             width: 100,
             height: 100,
             child: AnimatedAnalogClock(
-              location: 'Australia/Darwin',
+              // location: 'Australia/Darwin',
               size: 100,
-              backgroundColor: Color(0xff1E1E26),
-              hourHandColor: Colors.lightBlueAccent,
-              minuteHandColor: Colors.lightBlueAccent,
-              secondHandColor: Colors.amber,
-              centerDotColor: Colors.amber,
-              hourDashColor: Colors.lightBlue,
-              minuteDashColor: Colors.blueAccent,
+              // backgroundColor: Color(0xff1E1E26),
+              // hourHandColor: Colors.lightBlueAccent,
+              // minuteHandColor: Colors.lightBlueAccent,
+              // secondHandColor: Colors.amber,
+              // centerDotColor: Colors.amber,
+              // hourDashColor: Colors.lightBlue,
+              // minuteDashColor: Colors.blueAccent,
             ),
           ),
           SizedBox(height: 21),
@@ -120,23 +120,26 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
   }
 }
 
-class TaskListView extends StatelessWidget {
+class TaskListView extends StatefulWidget {
   const TaskListView({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    // final size = MediaQuery.of(context).size;
+  State<TaskListView> createState() => _TaskListViewState();
+}
 
+class _TaskListViewState extends State<TaskListView> {
+  @override
+  Widget build(BuildContext context) {
     return Container(
       width: 323,
       height: 248,
-      padding: const EdgeInsets.only(top: 26, left: 21),
+      padding: const EdgeInsets.only(top: 26, left: 21, right: 16),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(30),
         boxShadow: [
           BoxShadow(
-            color: AppColorPath.black.withValues(alpha: 0.25),
+            color: AppColorPath.black.withOpacity(0.25),
             blurRadius: 15,
             offset: Offset(0, 4),
           ),
@@ -148,45 +151,15 @@ class TaskListView extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               AppText(title: 'Tasks List', style: AppTextStyle.textFont13W400),
-              GestureDetector(
-                onTap: () {
-                  /// show dialog with textfield
-                  showDialog(
-                    context: context,
-                    builder: (context) {
-                      return AlertDialog(
-                        title: AppText(
-                          title: 'Tasks List',
-                          style: AppTextStyle.textFont18W600,
-                        ),
-                        content: AppTextField(hintText: 'Enter your email'),
-                        actions: [
-                          TextButton(
-                            onPressed: () {
-                              Navigator.pop(context);
-                            },
-                            child: AppText(
-                              title: 'Okay',
-                              style: AppTextStyle.textFont13W400.copyWith(
-                                color: AppColorPath.blue,
-                              ),
-                            ),
-                          ),
-                        ],
-                      );
-                    },
-                  );
+              AddTaskButton(
+                onTaskAdded: () {
+                  setState(() {}); // cập nhật UI khi thêm task mới
                 },
-                child: Icon(
-                  Icons.add_circle_outline,
-                  color: AppColorPath.darkBlue,
-                  size: 24,
-                ),
               ),
             ],
           ),
           SizedBox(height: 25),
-          TaskListOnly(),
+          Expanded(child: TaskListOnly()),
         ],
       ),
     );
