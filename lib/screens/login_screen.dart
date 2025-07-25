@@ -72,36 +72,40 @@ class LoginScreen extends StatelessWidget {
               content: 'Sign In',
             ),
             SizedBox(height: 29),
-            Text.rich(
-              TextSpan(
-                children: [
-                  TextSpan(
-                    text: 'Don’t have an account ?',
-                    style: AppTextStyle.textFont13W400.copyWith(
-                      color: AppColorPath.black,
-                    ),
-                  ),
-                  TextSpan(
-                    text: ' Sign Up',
-                    recognizer:
-                        TapGestureRecognizer()
-                          ..onTap = () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => RegistrationScreen(),
-                              ),
-                            );
-                          },
-                    style: AppTextStyle.textFont14W700.copyWith(
-                      color: AppColorPath.blue,
-                    ),
-                  ),
-                ],
-              ),
-            ),
+            _buildSignUpTextWidget(context),
           ],
         ),
+      ),
+    );
+  }
+
+  Text _buildSignUpTextWidget(BuildContext context) {
+    return Text.rich(
+      TextSpan(
+        children: [
+          TextSpan(
+            text: 'Don’t have an account ?',
+            style: AppTextStyle.textFont13W400.copyWith(
+              color: AppColorPath.black,
+            ),
+          ),
+          TextSpan(
+            text: ' Sign Up',
+            recognizer:
+                TapGestureRecognizer()
+                  ..onTap = () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => RegistrationScreen(),
+                      ),
+                    );
+                  },
+            style: AppTextStyle.textFont14W700.copyWith(
+              color: AppColorPath.blue,
+            ),
+          ),
+        ],
       ),
     );
   }

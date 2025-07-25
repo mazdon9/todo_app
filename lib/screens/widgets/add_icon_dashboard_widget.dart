@@ -6,13 +6,14 @@ import 'package:todo_app/constants/app_color_path.dart';
 import 'package:todo_app/constants/app_data.dart';
 import 'package:todo_app/models/task.dart';
 
-class AddTaskButton extends StatelessWidget {
+class AddIconDashboardWidget extends StatelessWidget {
   final VoidCallback onTaskAdded;
 
-  const AddTaskButton({super.key, required this.onTaskAdded});
+  const AddIconDashboardWidget({super.key, required this.onTaskAdded});
 
   @override
   Widget build(BuildContext context) {
+    final TextEditingController controller = TextEditingController();
     return IconButton(
       icon: Icon(
         Icons.add_circle_outline,
@@ -20,8 +21,6 @@ class AddTaskButton extends StatelessWidget {
         size: 24,
       ),
       onPressed: () {
-        final TextEditingController controller = TextEditingController();
-
         showDialog(
           context: context,
           builder: (context) {
@@ -43,7 +42,7 @@ class AddTaskButton extends StatelessWidget {
                   children: [
                     ElevatedButton(
                       onPressed: () {
-                        Navigator.pop(context); //
+                        Navigator.pop(context);
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.grey.shade300,
@@ -61,6 +60,7 @@ class AddTaskButton extends StatelessWidget {
                             Task(title: newText, isCompleted: true),
                           );
                           Navigator.pop(context);
+                          onTaskAdded();
                         }
                       },
                       child: const Text("OK"),
